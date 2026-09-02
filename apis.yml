@@ -1,17 +1,36 @@
 aid: varsity-tutors
 name: Varsity Tutors
-description: 'Varsity Tutors is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Varsity Tutors, a Nerdy company (NYSE: NRDY), is a St. Louis based live online
+  learning platform that connects K-12, college, graduate and professional learners
+  with expert instructors for private one-on-one tutoring, small-group and large-format
+  live classes, test preparation, practice tests and diagnostics across more than 3,000
+  subjects. Alongside its direct-to-consumer memberships it sells Varsity Tutors for
+  Schools to school districts, and it ships an AI-enhanced learning surface at
+  ai.varsitytutors.com. The company operates a production API gateway at
+  api.varsitytutors.com that serves its own web and mobile clients, but it publishes no
+  public developer portal, API reference or machine-readable contract; its only
+  documented third-party integration surface is its Clever app-gallery listing, which
+  provides Clever Instant Login SSO and Clever Secure Sync rostering to districts.
 url: https://raw.githubusercontent.com/api-evangelist/varsity-tutors/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-02'
 modified: '2026-09-02'
 tags:
 - Company
+- Education
+- EdTech
+- Online Learning
+- Tutoring
+- Test Preparation
+- K-12
+- Live Classes
+- Rostering
+- Single Sign-On
+- Artificial Intelligence
+image: https://www.varsitytutors.com/favicon.ico
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +38,60 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/varsity-tutors-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.varsitytutors.com/
+- type: Blog
+  url: https://www.varsitytutors.com/blog
+- type: SignUp
+  url: https://www.varsitytutors.com/login
+- type: TermsOfService
+  url: https://www.varsitytutors.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.varsitytutors.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/varsitytutors
+- type: LLMsTxt
+  url: llms/varsity-tutors-llms.txt
+- type: Conformance
+  url: conformance/varsity-tutors-conformance.yml
+- type: Lifecycle
+  url: lifecycle/varsity-tutors-lifecycle.yml
+- type: Plans
+  url: plans/varsity-tutors-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/varsity-tutors-rate-limits.yml
+
+x-enrichment:
+  date: '2026-09-02'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Varsity Tutors runs a real first-party API gateway at api.varsitytutors.com (its
+    responses carry `server: vt-apigw`), but its robots.txt reads `Allow:
+    /vtwa/v1/link_blocks_directory/lookup` then `Disallow: /` — the gateway exists only
+    to serve the company's own web and mobile clients, and the company publishes no
+    developer portal, API reference, SDK or machine-readable contract on any of its four
+    first-party hosts; its sole documented third-party integration is a Clever
+    app-gallery listing in which Varsity Tutors CONSUMES Clever's Instant Login and
+    Secure Sync rostering APIs rather than exposing one of its own.
+  evidence:
+  - url: https://api.varsitytutors.com/robots.txt
+    status: 200
+  - url: https://api.varsitytutors.com/openapi.json
+    status: 404
+  - url: https://api.varsitytutors.com/graphql
+    status: 403
+  - url: https://www.varsitytutors.com/.well-known/agent-card.json
+    status: 404
+  - url: https://developer.varsitytutors.com/
+    status: 404
+  - url: https://docs.varsitytutors.com/
+    status: 404
+  checked: '2026-09-02'

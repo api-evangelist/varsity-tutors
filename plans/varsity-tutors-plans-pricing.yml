@@ -1,0 +1,22 @@
+generated: '2026-09-02'
+method: searched
+source: https://www.varsitytutors.com/t/
+plan_count: 0
+currency: USD
+model: quote-only
+note: >-
+  Varsity Tutors publishes no price list. https://www.varsitytutors.com/pricing returns
+  404 and https://www.varsitytutors.com/tutoring-cost 308-redirects to
+  https://www.varsitytutors.com/t/, which sells memberships through a "Get Started in
+  60 Seconds" needs questionnaire and a sales phone number rather than named tiers with
+  published rates. Membership pricing is quoted per learner after that intake, and the
+  Varsity Tutors for Schools district offering is sold entirely through enterprise
+  contracting. There is no machine-readable pricing or catalog endpoint, and no API
+  pricing exists because there is no public API product.
+plans: []
+evidence:
+- {url: 'https://www.varsitytutors.com/t/', status: 200, finding: intake questionnaire and sales phone number, no published rates}
+- {url: 'https://www.varsitytutors.com/pricing', status: 404, finding: no pricing page}
+- {url: 'https://www.varsitytutors.com/pricing-plans', status: 404, finding: no pricing page}
+- {url: 'https://www.varsitytutors.com/memberships', status: 404, finding: no membership tier page}
+- {url: 'https://www.varsitytutors.com/tutoring-cost', status: 308, finding: redirects to /t/ intake funnel}

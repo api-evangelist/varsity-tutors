@@ -1,0 +1,113 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://www.varsitytutors.com/privacy and https://www.clever.com/app-gallery/varsity-tutors/
+note: >-
+  Varsity Tutors publishes no machine-readable contract, so every entry below is asserted
+  from the provider's own public pages rather than derived from a spec. The education
+  regulatory regime is where this company's real conformance evidence sits: its privacy
+  policy names COPPA, FERPA and a long list of US state consumer-privacy statutes it
+  operates under. Its only documented third-party interoperability path is its Clever
+  app-gallery listing. That listing is Varsity Tutors acting as a CONSUMER of Clever's
+  rostering API, not a contract Varsity Tutors publishes — recorded here so a reader
+  does not mistake the Clever relationship for a Varsity Tutors API.
+domain_standard:
+  declared: false
+  note: >-
+    REWARD-ONLY check, and this provider earns nothing here — not as a penalty, but
+    because no contract exists to declare a standard in. K-12 interoperability standards
+    are the ones that would apply (1EdTech OneRoster, LTI 1.3/Advantage, Ed-Fi, Caliper,
+    QTI). Varsity Tutors declares none of them on its own surface. Clever, its rostering
+    intermediary, supports OneRoster on Clever's side; that is Clever's conformance, not
+    Varsity Tutors'. Do not upgrade this entry without a Varsity Tutors-published
+    artifact that carries a standard's identifiers.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document at /openapi.json, /openapi.yaml, /swagger.json,
+    /v1/openapi.json, /api-docs, /docs or /redoc on www.varsitytutors.com,
+    api.varsitytutors.com, ai.varsitytutors.com, nerdyai.varsitytutors.com or nerdy.com.
+- id: graphql
+  conforms: false
+  evidence: >-
+    /graphql returns 403 on api.varsitytutors.com and 404 on every other host; no SDL
+    and no introspection surface is exposed.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is documented anywhere on the provider's sites.
+- id: soap-wsdl
+  conforms: false
+  evidence: '?wsdl and ?singleWsdl return 404 on api.varsitytutors.com and www.varsitytutors.com.'
+- id: mcp
+  conforms: false
+  evidence: /mcp returns 404 on api.varsitytutors.com, ai.varsitytutors.com and nerdyai.varsitytutors.com.
+- id: a2a-agent-card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and the legacy /.well-known/agent.json return 404 on all
+    four first-party hosts.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on all four first-party hosts.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    /.well-known/oauth-authorization-server returns 404 on all hosts; no OAuth
+    authorization or token endpoint is documented for third parties.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on all four first-party hosts.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    The one crawlable gateway path returns a plain-text error body
+    ("Invalid parameters: id, subject, or full_path must be present") with content-type
+    text/plain, not application/problem+json.
+- id: oneroster
+  conforms: false
+  evidence: >-
+    Not declared by Varsity Tutors. Rostering is delegated to Clever Secure Sync; Clever
+    is the party that implements OneRoster on the district side.
+- id: lti-1p3
+  conforms: false
+  evidence: >-
+    No LTI launch surface published; /lti returns 404 on www.varsitytutors.com and no LTI
+    tool registration is documented.
+- id: clever-instant-login
+  conforms: true
+  evidence: >-
+    Clever app-gallery listing states "Varsity Tutors offers SSO through Clever Instant
+    Login" — https://www.clever.com/app-gallery/varsity-tutors/
+- id: clever-secure-sync
+  conforms: true
+  evidence: >-
+    Clever app-gallery listing states "Varsity Tutors rosters and provisions accounts
+    through Clever Secure Sync" — https://www.clever.com/app-gallery/varsity-tutors/
+- id: coppa
+  conforms: true
+  evidence: >-
+    Privacy policy names the Children's Online Privacy Protection Act of 1998 —
+    https://www.varsitytutors.com/privacy
+- id: ferpa
+  conforms: true
+  evidence: >-
+    Privacy policy names the Family Educational Rights and Privacy Act —
+    https://www.varsitytutors.com/privacy
+- id: ccpa-cpra
+  conforms: true
+  evidence: >-
+    Privacy policy names the California Consumer Privacy Act and the California Privacy
+    Rights Act, plus the Colorado, Connecticut, Delaware, Iowa, Maryland, Minnesota,
+    Nebraska, New Hampshire, New Jersey, Tennessee, Utah and Virginia consumer data
+    protection acts and Nevada Revised Statute 603A —
+    https://www.varsitytutors.com/privacy
+- id: soc2
+  conforms: false
+  evidence: >-
+    No SOC 2 claim on any public page. trust.varsitytutors.com (404),
+    www.varsitytutors.com/security (404) and nerdy.com/security (404) do not exist, and
+    probe-security-programs.py found no trust center.
+- id: iso-27001
+  conforms: false
+  evidence: No ISO 27001 claim on any public page; no trust center exists.

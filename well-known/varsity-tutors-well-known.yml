@@ -1,0 +1,48 @@
+generated: '2026-09-02'
+method: probed
+source: >-
+  Live unauthenticated GET of the five canonical /.well-known/ paths against every
+  first-party Varsity Tutors host discovered during enrichment (marketing site, API
+  gateway, AI learning surface, Nerdy AI login surface). No pointer is emitted from
+  this file: every path returned 404, so this manifest records a verified ABSENCE.
+note: >-
+  Varsity Tutors serves no /.well-known/ documents on any host. www.varsitytutors.com,
+  ai.varsitytutors.com and nerdyai.varsitytutors.com return their application 404 pages;
+  api.varsitytutors.com returns a bare nginx 404. None of the responses carried a real
+  document, so no WellKnown or SecurityTxt pointer is wired into apis.yml.
+hosts:
+- host: www.varsitytutors.com
+  role: marketing and learner web application
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+- host: api.varsitytutors.com
+  role: >-
+    First-party API gateway (response header `server: vt-apigw`, Phusion Passenger/Rails
+    origin) serving the Varsity Tutors web and mobile clients. Undocumented; its
+    robots.txt disallows every path except /vtwa/v1/link_blocks_directory/lookup.
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+- host: ai.varsitytutors.com
+  role: AI-enhanced learning tools surface
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+- host: nerdyai.varsitytutors.com
+  role: Nerdy AI product login surface
+  documents:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}

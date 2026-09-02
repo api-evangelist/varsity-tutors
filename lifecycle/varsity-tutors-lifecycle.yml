@@ -1,0 +1,35 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  Live probes of the Varsity Tutors and Nerdy public surface for a status page,
+  versioning policy, deprecation policy and SLA.
+note: >-
+  Nothing in this file is a derived guess — each null is a probe that returned nothing.
+  Varsity Tutors runs no public status page, publishes no API versioning or deprecation
+  policy, and offers no SLA, because it runs no public API program. The only version
+  signal observable anywhere is the `/vtwa/v1/` path prefix on its internal gateway,
+  which implies URI-path versioning for its own clients but is not a published contract
+  and carries no stated compatibility promise.
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: null
+  observed_only: true
+  observed_at: https://api.varsitytutors.com/vtwa/v1/link_blocks_directory/lookup
+  note: >-
+    Inferred from the one gateway path the provider's robots.txt allows a crawler to
+    request. Internal-only; Varsity Tutors makes no public versioning commitment.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No deprecation or sunset policy published. RFC 8594 Sunset/Deprecation headers were
+    not present on the observed gateway response. No Deprecation pointer is wired.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_evidence:
+- {url: 'https://status.varsitytutors.com/', status: 404}
+- {url: 'https://status.nerdy.com/', status: 0, note: 'no DNS resolution / no response'}
+deprecated_operations: []

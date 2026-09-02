@@ -1,0 +1,29 @@
+generated: '2026-09-02'
+method: probed
+source: https://api.varsitytutors.com/vtwa/v1/link_blocks_directory/lookup
+limit_count: 0
+note: >-
+  No rate limits are published, because Varsity Tutors publishes no developer
+  documentation of any kind. The one API path the company's own robots.txt allows a
+  crawler to touch — /vtwa/v1/link_blocks_directory/lookup on the first-party gateway
+  api.varsitytutors.com — was fetched unauthenticated and returned HTTP 422 with the
+  plain-text body "Invalid parameters: id, subject, or full_path must be present". Its
+  response carried NO rate-limit headers: no X-RateLimit-*, no RateLimit-*, no
+  Retry-After. The headers actually returned were cache-control, referrer-policy,
+  x-amzn-trace-id, x-content-type-options, x-download-options, x-frame-options,
+  x-permitted-cross-domain-policies, x-request-id, x-runtime, x-xss-protection,
+  x-powered-by (Phusion Passenger 6.0.14) and server (vt-apigw). An agent calling this
+  gateway has no runtime budget signal at all.
+limits: []
+headers:
+  observed: []
+  ratelimit_standard: false
+  retry_after: false
+exhaustion_status: null
+evidence:
+- url: https://api.varsitytutors.com/vtwa/v1/link_blocks_directory/lookup
+  status: 422
+  finding: no rate-limit response headers present on an unauthenticated call
+- url: https://api.varsitytutors.com/robots.txt
+  status: 200
+  finding: 'Allow: /vtwa/v1/link_blocks_directory/lookup then Disallow: / — the only crawlable API path'
